@@ -1,10 +1,10 @@
-from fastapi import FastAPI
-import socket
+from flask import Flask
 
-app = FastAPI()
+app = Flask(__name__)
 
-@app.get("/")
-def read_root():
-    hostname = socket.gethostname()
-    # Version 1.0 (Blue Environment)
-    return {"version": "Blue (v1.0)", "pod": hostname}
+@app.route("/")
+def home():
+    return "Blue or Green App Running!"
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=8080)
